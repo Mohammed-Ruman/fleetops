@@ -1,6 +1,8 @@
-from typing import List
+from typing import List, Dict
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+
+from fleetops.dependencies.common import get_vehicle_service
 
 router = APIRouter()
 
@@ -15,3 +17,7 @@ def get_vehicle(id: int) -> str:
     if id > len(vehicles):
         raise HTTPException(status_code=404, detail="Vehicle not found")
     return vehicles[id]
+
+@router.get("/dependency-check")
+def dependency_check(service:Dict=Depends(get_vehicle_service)):
+    return service
