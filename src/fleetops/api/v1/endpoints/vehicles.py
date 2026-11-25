@@ -12,6 +12,6 @@ def get_vehicles() -> List[str]:
 
 @router.get("/vehicles/{id}")
 def get_vehicle(id: int) -> str:
-    if id not in vehicles:
+    if id > len(vehicles):
         raise HTTPException(status_code=404, detail="Vehicle not found")
     return vehicles[id]
