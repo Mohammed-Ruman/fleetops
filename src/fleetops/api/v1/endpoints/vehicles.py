@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 
@@ -12,4 +12,6 @@ def get_vehicles() -> List[str]:
 
 @router.get("/vehicles/{id}")
 def get_vehicle(id: int) -> str:
+    if id not in vehicles:
+        raise HTTPException(status_code=404, detail="Vehicle not found")
     return vehicles[id]
