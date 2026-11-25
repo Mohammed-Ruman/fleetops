@@ -1,0 +1,15 @@
+fastapi[standard]
+sqlalchemy
+psycopg[binary]
+alembic
+pydantic[email]
+pydantic-settings
+pwdlib[argon2]
+PyJWT[crypto]
+structlog
+python-multipart
+
+pytest
+pytest-cov
+httpx
+ruff
